@@ -35,3 +35,20 @@ void tambahItem() {
     }
     cout << "[✓] Produk berhasil ditambahkan.\n";
 }
+
+void tampilItem() {
+    if (!head) {
+        cout << "[!] Inventaris kosong.\n";
+        return;
+    }
+
+    BakeryItem* temp = head;
+    cout << "\n=== Daftar Produk ===\n";
+    while (temp) {
+        cout << "Nama   : " << temp->nama << endl;
+        cout << "Harga  : Rp" << temp->harga << endl;
+        cout << "Stok   : " << temp->stok << "\n" << endl;
+        temp = temp->next;
+    }
+}
+
