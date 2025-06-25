@@ -132,3 +132,31 @@ void hapusItem() {
     cout << "[!] Produk tidak ditemukan.\n";
 }
 
+void menu() {
+    int pilihan;
+    do {
+        cout << "\n===== Menu Inventaris Toko Roti =====\n";
+        cout << "1. Tambah Produk\n";
+        cout << "2. Tampilkan Produk\n";
+        cout << "3. Ubah Produk\n";
+        cout << "4. Hapus Produk\n";
+        cout << "5. Keluar\n";
+        cout << "Pilih (1-5): ";
+        cin >> pilihan;
+        cin.ignore();
+
+        switch (pilihan) {
+            case 1: tambahItem(); break;
+            case 2: tampilItem(); break;
+            case 3: ubahItem(); break;
+            case 4: hapusItem(); break;
+            case 5: cout << "Terima kasih telah menggunakan sistem inventaris.\n"; break;
+            default: cout << "[!] Pilihan tidak valid.\n";
+        }
+    } while (pilihan != 5);
+}
+
+int main() {
+    menu();
+    return 0;
+}
