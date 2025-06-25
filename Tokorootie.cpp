@@ -52,3 +52,49 @@ void tampilItem() {
     }
 }
 
+void ubahItem() {
+    if (!head) {
+        cout << "[!] Inventaris kosong.\n";
+        return;
+    }
+
+    string target;
+    cout << "Masukkan nama produk yang ingin diubah: ";
+    getline(cin, target);
+
+    BakeryItem* temp = head;
+    while (temp) {
+        if (temp->nama == target) {
+            int opsi;
+            cout << "Pilih data yang ingin diubah:\n";
+            cout << "1. Nama\n2. Harga\n3. Stok\n>> ";
+            cin >> opsi;
+            cin.ignore();
+
+            switch (opsi) {
+                case 1:
+                    cout << "Nama baru: ";
+                    getline(cin, temp->nama);
+                    break;
+                case 2:
+                    cout << "Harga baru: ";
+                    cin >> temp->harga;
+                    cin.ignore();
+                    break;
+                case 3:
+                    cout << "Stok baru: ";
+                    cin >> temp->stok;
+                    cin.ignore();
+                    break;
+                default:
+                    cout << "[!] Opsi tidak valid.\n";
+                    return;
+            }
+            cout << "[✓] Produk berhasil diperbarui.\n";
+            return;
+        }
+        temp = temp->next;
+    }
+    cout << "[!] Produk tidak ditemukan.\n";
+}
+
