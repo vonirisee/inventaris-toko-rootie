@@ -98,3 +98,37 @@ void ubahItem() {
     cout << "[!] Produk tidak ditemukan.\n";
 }
 
+void hapusItem() {
+    if (!head) {
+        cout << "[!] Inventaris kosong.\n";
+        return;
+    }
+
+    string target;
+    cout << "Masukkan nama produk yang ingin dihapus: ";
+    getline(cin, target);
+
+    BakeryItem* temp = head;
+    BakeryItem* prev = nullptr;
+
+    if (temp->nama == target) {
+        head = temp->next;
+        delete temp;
+        cout << "[✓] Produk berhasil dihapus.\n";
+        return;
+    }
+
+    while (temp) {
+        if (temp->nama == target) {
+            prev->next = temp->next;
+            delete temp;
+            cout << "[✓] Produk berhasil dihapus.\n";
+            return;
+        }
+        prev = temp;
+        temp = temp->next;
+    }
+
+    cout << "[!] Produk tidak ditemukan.\n";
+}
+
